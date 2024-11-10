@@ -33,6 +33,7 @@ jobs:
           pip install scikit-learn==1.5.1
           pip install joblib
           pip install requests
+
       - name: Run Spam Detection
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
