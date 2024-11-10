@@ -54,6 +54,7 @@ def fetch_comments(owner, repo, headers, after_cursor=None, comment_type="discus
         "after": after_cursor,
     }
     response = requests.post(GITHUB_API_URL, headers=headers, json={"query": query, "variables": variables})
+    print("Fetch Comments Response:", response.json())  # Debugging line
     if response.status_code == 200:
         return response.json()
     else:
@@ -102,6 +103,11 @@ def moderate_comments(owner, repo, token):
                         comment_id = comment_edge['node']['id']
                         comment_body = comment_edge['node']['body']
                         is_minimized = comment_edge['node']['isMinimized']
+
+                        # Debugging outputs
+                        print(f"Processing {comment_type} comment:", comment_body)
+                        print("Is Minimized:", is_minimized)
+                        print("Is Spam:", detect_spam(comment_body))
 
                         if not is_minimized and detect_spam(comment_body):
                             hidden = minimize_comment(comment_id, headers)
