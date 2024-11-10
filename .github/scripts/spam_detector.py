@@ -131,6 +131,6 @@ def moderate_comments(owner, repo, token):
 
 if __name__ == "__main__":
     OWNER = "Sambhaji-Patil"  # Replace with the repository owner
-    REPO = "spam-filter-v1"  # Replace with the repository name
+    REPO = "test2"  # Replace with the repository name
     TOKEN = os.getenv('GITHUB_TOKEN')  # Ensure this is set in your GitHub Actions environment
     moderate_comments(OWNER, REPO, TOKEN)
